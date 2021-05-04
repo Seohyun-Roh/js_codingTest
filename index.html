@@ -9,19 +9,16 @@
       function solution(a, b, c) {
         let answer = 'YES',
           max;
-        let sum = 0;
+        let sum = a + b + c;
         if (a > b) max = a;
         else max = b;
         if (c > max) max = c;
 
-        if (a < max) sum += a;
-        if (b < max) sum += b;
-        if (c < max) sum += c;
-        if (sum < max) answer = 'NO';
+        if (sum - max <= max) answer = 'NO';
         return answer;
       }
 
-      console.log(solution(6, 7, 11));
+      console.log(solution(13, 33, 17));
     </script>
   </body>
 </html>
