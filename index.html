@@ -7,11 +7,21 @@
   <body>
     <script>
       function solution(a, b, c) {
-        let answer = 'YES';
+        let answer = 'YES',
+          max;
+        let sum = 0;
+        if (a > b) max = a;
+        else max = b;
+        if (c > max) max = c;
+
+        if (a < max) sum += a;
+        if (b < max) sum += b;
+        if (c < max) sum += c;
+        if (sum < max) answer = 'NO';
         return answer;
       }
 
-      console.log(solution(13, 33, 17));
+      console.log(solution(6, 7, 11));
     </script>
   </body>
 </html>
