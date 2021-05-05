@@ -8,12 +8,9 @@
     <script>
       function solution(n) {
         let answer = 0;
-        let count = 1;
-        while (count !== n) {
-          answer += count;
-          count++;
+        for (let i = 1; i <= n; i++) {
+          answer = answer + i;
         }
-        answer += n;
         return answer;
       }
 
