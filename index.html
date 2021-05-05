@@ -6,19 +6,12 @@
   </head>
   <body>
     <script>
-      function solution(a, b, c) {
-        let answer = 'YES',
-          max;
-        let sum = a + b + c;
-        if (a > b) max = a;
-        else max = b;
-        if (c > max) max = c;
-
-        if (sum - max <= max) answer = 'NO';
+      function solution(n) {
+        let answer;
         return answer;
       }
 
-      console.log(solution(13, 33, 17));
+      console.log(solution(178));
     </script>
   </body>
 </html>
