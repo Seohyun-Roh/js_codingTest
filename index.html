@@ -8,9 +8,7 @@
     <script>
       function solution(s) {
         let answer = s;
-        for (let i = 0; i < s.length; i++) {
-          answer = answer.replace('A', '#');
-        }
+        answer = answer.replace(/A/g, '#');
         return answer;
       }
 
