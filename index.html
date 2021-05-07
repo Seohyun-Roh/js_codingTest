@@ -8,9 +8,13 @@
     <script>
       function solution(s) {
         let answer;
+        let length = s.length,
+          mid = Math.floor(length / 2);
+        if (length % 2 === 0) answer = s.substr(mid - 1, 2);
+        else answer = s.substr(mid, 1);
         return answer;
       }
-      console.log(solution("study"));
+      console.log(solution("good"));
     </script>
   </body>
 </html>
