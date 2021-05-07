@@ -7,15 +7,13 @@
   <body>
     <script>
       function solution(s) {
-        let answer;
-        let arr = [],
+        let answer,
           max = Number.MIN_SAFE_INTEGER;
-        for (let i = 0; i < s.length; i++) {
-          arr[i] = s[i].length;
-        }
-        max = Math.max(...arr);
-        for (let i = 0; i < arr.length; i++) {
-          if (arr[i] == max) answer = s[i];
+        for (let x of s) {
+          if (x.length > max) {
+            max = x.length;
+            answer = x;
+          }
         }
         return answer;
       }
