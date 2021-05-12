@@ -21,10 +21,13 @@
           sum2 = 0;
         }
         sum1 = 0;
+        sum2 = 0;
         for (let i = 0; i < arr.length; i++) {
           sum1 += arr[i][i];
+          sum2 += arr[arr.length - i];
         }
         if (answer < sum1) answer = sum1;
+        if (answer < sum2) answer = sum2;
         return answer;
       }
 
