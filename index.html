@@ -8,26 +8,21 @@
     <script>
       function solution(arr) {
         let answer = Number.MIN_SAFE_INTEGER,
-          sum1 = 0,
-          sum2 = 0;
+          sum1 = (sum2 = 0);
         for (let i = 0; i < arr.length; i++) {
+          sum1 = sum2 = 0;
           for (let j = 0; j < arr.length; j++) {
             sum1 += arr[i][j]; //행의 합
             sum2 += arr[j][i]; //열의 합
           }
-          if (answer < sum1) answer = sum1;
-          if (answer < sum2) answer = sum2;
-          sum1 = 0;
-          sum2 = 0;
+          answer = Math.max(answer, sum1, sum2);
         }
-        sum1 = 0;
-        sum2 = 0;
+        sum1 = sum2 = 0;
         for (let i = 0; i < arr.length; i++) {
           sum1 += arr[i][i];
-          sum2 += arr[arr.length - i];
+          sum2 += arr[i][arr.length - i - 1];
         }
-        if (answer < sum1) answer = sum1;
-        if (answer < sum2) answer = sum2;
+        answer = Math.max(answer, sum1, sum2);
         return answer;
       }
 
