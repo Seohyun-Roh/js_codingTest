@@ -6,7 +6,16 @@
   <body>
     <script>
       function solution(s) {
-        let answer;
+        let answer = "YES";
+        let n = s.length;
+        for (let i = 0; i < n / 2; i++) {
+          if (
+            s.substr(i, 1).toLowerCase() !==
+            s.substr(n - i - 1, 1).toLowerCase()
+          ) {
+            answer = "NO";
+          }
+        }
         return answer;
       }
 
