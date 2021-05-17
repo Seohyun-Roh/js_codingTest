@@ -6,11 +6,17 @@
   <body>
     <script>
       function solution(s) {
-        let answer;
+        let answer = 'YES';
+        let n = s.length;
+        s = s.toLowerCase();
+        for (let i = 0; i < Math.floor(n / 2); i++) {
+          if (s[i].charCodeAt() > 122 || s[i].charCodeAt() < 97) continue;
+          if (s[i] !== s[n - 1 - i]) answer = 'NO';
+        }
         return answer;
       }
 
-      let str = "found7, time: study; Yduts; emit, 7Dnuof";
+      let str = 'found7, time: study; Yduts; emit, 7Dnuof';
       console.log(solution(str));
     </script>
   </body>
