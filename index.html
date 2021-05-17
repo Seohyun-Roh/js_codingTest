@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8" />
@@ -7,15 +8,10 @@
     <script>
       function solution(s) {
         let answer = 'YES';
-        let n = s.length;
-        s = s.toLowerCase();
-        for (let i = 0; i < Math.floor(n / 2); i++) {
-          if (s[i].charCodeAt() > 122 || s[i].charCodeAt() < 97) continue;
-          if (s[i] !== s[n - 1 - i]) answer = 'NO';
-        }
+        s = s.toLowerCase().replace(/[^a-z]/g, '');
+        if (s.split('').reverse().join('') !== s) return 'NO';
         return answer;
       }
-
       let str = 'found7, time: study; Yduts; emit, 7Dnuof';
       console.log(solution(str));
     </script>
