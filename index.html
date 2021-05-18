@@ -7,11 +7,11 @@
   <body>
     <script>
       function solution(str) {
-        let answer = '';
+        let answer = 0;
         for (let x of str) {
-          if (x.charCodeAt() >= 48 && x.charCodeAt() <= 57) answer += x;
+          if (!isNaN(x)) answer = answer * 10 + Number(x);
         }
-        return parseInt(answer);
+        return answer;
       }
 
       let str = 'g0en2T0s8eSoft';
