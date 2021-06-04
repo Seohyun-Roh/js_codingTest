@@ -7,11 +7,30 @@
   <body>
     <script>
       function solution(s) {
-        let answer;
+        let answer = "";
+        let letter = s[0];
+        let count = 1;
+        s = s.split("");
+        for (let i = 0; i < s.length; i++) {
+          for (let j = 1; j <= s.length; j++) {
+            if (letter === s[j]) {
+              count++;
+              s.splice(j, 1);
+              console.log(j);
+              j--;
+            }
+          }
+          console.log("-----");
+          if (count > 1) answer += letter + count;
+          else answer += letter;
+          s.splice(0, 1);
+          letter = s[0];
+          count = 1;
+        }
+        if (s[0] !== null) answer += letter;
         return answer;
       }
-
-      let str = "KKHSSSSSSSE";
+      let str = "KKHSSSSSSSEE";
       console.log(solution(str));
     </script>
   </body>
