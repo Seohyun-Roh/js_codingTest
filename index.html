@@ -8,27 +8,15 @@
     <script>
       function solution(s) {
         let answer = '';
-        let letter = s[0];
-        let count = 1;
-        let length = s.length;
-        let undefinedVar = undefined;
-        s = s.split('');
-
-        for (let i = 0; i < length; i++) {
-          for (let j = 1; j <= s.length; j++) {
-            if (letter === s[j]) {
-              count++;
-              s.splice(j, 1);
-              j--;
-            }
+        let cnt = 1;
+        s = s + ' ';
+        for (let i = 0; i < s.length - 1; i++) {
+          if (s[i] === s[i + 1]) cnt++;
+          else {
+            answer += s[i];
+            if (cnt > 1) answer += String(cnt);
+            cnt = 1;
           }
-          if (count > 1) answer += letter + count;
-          else answer += letter;
-          s.splice(0, 1);
-
-          letter = s[0];
-          count = 1;
-          if (s[0] === undefinedVar) return answer;
         }
         return answer;
       }
