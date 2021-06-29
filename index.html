@@ -8,23 +8,21 @@
     <script>
       function solution(n, arr) {
         let answer,
-          tmp = [0, Number.MIN_SAFE_INTEGER];
+          max = Number.MIN_SAFE_INTEGER;
         for (let x of arr) {
           let sum = 0,
-            num = x;
-          let length = num.toString().length;
-          for (let i = 0; i < length; i++) {
-            sum += Math.floor(num % 10);
-            num = Math.floor(num / 10);
+            tmp = x;
+          while (tmp) {
+            sum += Math.floor(tmp % 10);
+            tmp = Math.floor(tmp / 10);
           }
-          if (tmp[1] < sum) {
-            tmp[0] = x;
-            tmp[1] = sum;
-          } else if (tmp[1] === sum) {
-            tmp[0] = Math.max(tmp[0], x);
+          if (sum > max) {
+            max = sum;
+            answer = x;
+          } else if (sum === max) {
+            if (x > answer) answer = x;
           }
         }
-        answer = tmp[0];
         return answer;
       }
 
