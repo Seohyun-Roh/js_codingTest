@@ -15,13 +15,7 @@
       function solution(arr) {
         let answer = [];
         for (let x of arr) {
-          let res = 0; //입력된 수를 뒤집은 수를 res에 저장
-          while (x) {
-            //x가 0이되면 멈춤
-            let t = x % 10;
-            res = res * 10 + t;
-            x = parseInt(x / 10);
-          }
+          let res = Number(x.toString().split('').reverse().join(''));
           if (isPrime(res)) answer.push(res);
         }
         return answer;
