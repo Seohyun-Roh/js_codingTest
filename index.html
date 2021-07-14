@@ -8,19 +8,15 @@
     <script>
       function solution(m, product) {
         let answer = 0;
-        product.sort(function (a, b) {
-          return a[0] - b[0] || a[1] - b[1];
-        });
+        product.sort((a, b) => a[0] + a[1] - (b[0] + b[1])); //총 금액을 비교해줘야 하므로 a[0]+a[1]로 비교
         for (i = 0; i < product.length; i++) {
-          let res = m;
+          let money = m - (product[i][0] / 2 + product[i][1]);
           let student = 1;
-          let dcnt = product[i][0] / 2;
-          res = res - (dcnt + product[i][1]);
           for (j = 0; j < product.length; j++) {
             if (i === j) continue;
             let sum = product[j][0] + product[j][1];
-            if (res - sum >= 0) {
-              res -= sum;
+            if (sum <= money) {
+              money -= sum;
               student++;
             } else break;
           }
