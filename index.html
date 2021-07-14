@@ -7,7 +7,25 @@
   <body>
     <script>
       function solution(m, product) {
-        let answer;
+        let answer = 0;
+        product.sort(function (a, b) {
+          return a[0] - b[0] || a[1] - b[1];
+        });
+        for (i = 0; i < product.length; i++) {
+          let res = m;
+          let student = 1;
+          let dcnt = product[i][0] / 2;
+          res = res - (dcnt + product[i][1]);
+          for (j = 0; j < product.length; j++) {
+            if (i === j) continue;
+            let sum = product[j][0] + product[j][1];
+            if (res - sum >= 0) {
+              res -= sum;
+              student++;
+            } else break;
+          }
+          answer = Math.max(student, answer);
+        }
         return answer;
       }
 
