@@ -7,21 +7,12 @@
   <body>
     <script>
       function solution(arr1, arr2) {
-        let answer = [];
-        let i = (j = 0);
-        let n = arr1.length;
-        let m = arr2.length;
-        while (i < n && j < m) {
-          if (arr1[i] >= arr2[j]) answer.push(arr2[j++]);
-          else answer.push(arr1[i++]);
-        }
-        while (i < n) answer.push(arr1[i++]);
-        while (j < m) answer.push(arr2[j++]);
+        let answer;
         return answer;
       }
 
-      let a = [1, 3, 5];
-      let b = [2, 3, 6, 7, 9];
+      let a = [1, 3, 9, 5, 2];
+      let b = [3, 2, 5, 7, 8];
       console.log(solution(a, b));
     </script>
   </body>
