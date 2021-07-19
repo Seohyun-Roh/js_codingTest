@@ -7,7 +7,16 @@
   <body>
     <script>
       function solution(arr1, arr2) {
-        let answer;
+        let answer = [];
+        for (let p1 of arr1) {
+          for (let p2 of arr2) {
+            if (p1 === p2) {
+              answer.push(p1);
+              break;
+            }
+          }
+        }
+        answer.sort();
         return answer;
       }
 
