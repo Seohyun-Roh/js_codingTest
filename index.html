@@ -7,7 +7,19 @@
   <body>
     <script>
       function solution(m, arr) {
-        let answer;
+        let answer = 0,
+          sum = 0;
+        for (let p1 = 0; p1 < arr.length; p1++) {
+          sum = arr[p1];
+          for (let p2 = p1 + 1; p2 < arr.length; p2++) {
+            sum += arr[p2];
+            if (sum === m) {
+              answer++;
+              break;
+            }
+            if (sum > m) break;
+          }
+        }
         return answer;
       }
 
