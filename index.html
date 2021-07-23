@@ -7,17 +7,21 @@
   <body>
     <script>
       function solution(m, arr) {
-        let answer = 0,
-          sum = 0;
-        for (let p1 = 0; p1 < arr.length; p1++) {
-          sum = arr[p1];
-          for (let p2 = p1 + 1; p2 < arr.length; p2++) {
-            sum += arr[p2];
-            if (sum === m) {
-              answer++;
-              break;
-            }
-            if (sum > m) break;
+        let answer = (lt = 0);
+        let rt = 1;
+        let sum = arr[lt] + arr[rt];
+        while (rt < arr.length && lt < arr.length) {
+          if (sum < m) {
+            if (rt === arr.length - 1) break;
+            rt++;
+            sum += arr[rt];
+          } else if (sum > m) {
+            lt++;
+            sum -= arr[lt];
+          } else {
+            answer++;
+            lt++;
+            sum -= arr[lt];
           }
         }
         return answer;
