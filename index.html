@@ -8,33 +8,20 @@
     <script>
       function solution(m, arr) {
         let answer = (lt = sum = 0);
-        /*while (rt < arr.length && lt < arr.length) {
-          if (sum < m) {
-            if (rt === arr.length - 1) break;
-            rt++;
-            sum += arr[rt];
-          } else if (sum > m) {
-            lt++;
-            sum -= arr[lt];
-          } else {
-            answer++;
-            lt++;
-            sum -= arr[lt];
-          }
-        }*/
         for (let rt = 0; rt < arr.length; rt++) {
+          if (arr[rt] <= m) answer++;
           sum += arr[rt];
-          if (sum === m) answer++;
+          if (sum < m) answer++;
           while (sum >= m) {
-            sum -= arr[lt++];
-            if (sum === m) answer++;
+            sum -= arr[rt];
+            answer++;
           }
         }
         return answer;
       }
 
-      let a = [1, 2, 1, 3, 1, 1, 1, 2];
-      console.log(solution(6, a));
+      let a = [1, 3, 1, 2, 3];
+      console.log(solution(5, a));
     </script>
   </body>
 </html>
