@@ -7,10 +7,8 @@
   <body>
     <script>
       function solution(m, arr) {
-        let answer = (lt = 0);
-        let rt = 1;
-        let sum = arr[lt] + arr[rt];
-        while (rt < arr.length && lt < arr.length) {
+        let answer = (lt = sum = 0);
+        /*while (rt < arr.length && lt < arr.length) {
           if (sum < m) {
             if (rt === arr.length - 1) break;
             rt++;
@@ -22,6 +20,14 @@
             answer++;
             lt++;
             sum -= arr[lt];
+          }
+        }*/
+        for (let rt = 0; rt < arr.length; rt++) {
+          sum += arr[rt];
+          if (sum === m) answer++;
+          while (sum >= m) {
+            sum -= arr[lt++];
+            if (sum === m) answer++;
           }
         }
         return answer;
