@@ -8,6 +8,16 @@
     <script>
       function solution(s) {
         let answer;
+        let hash = { A: 0, B: 0, C: 0, D: 0, E: 0 };
+        for (let x of s) {
+          if (x === "A") hash.A++;
+          else if (x === "B") hash.B++;
+          else if (x === "C") hash.C++;
+          else if (x === "D") hash.D++;
+          else hash.E++;
+        }
+        if (hash.number === 5) console.log(hash.A);
+        //console.log(hash);
         return answer;
       }
       let str = "BACBACCACCBDEDE";
