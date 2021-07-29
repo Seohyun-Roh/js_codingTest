@@ -8,16 +8,18 @@
     <script>
       function solution(s) {
         let answer;
-        let hash = { A: 0, B: 0, C: 0, D: 0, E: 0 };
+        let sH = new Map();
         for (let x of s) {
-          if (x === "A") hash.A++;
-          else if (x === "B") hash.B++;
-          else if (x === "C") hash.C++;
-          else if (x === "D") hash.D++;
-          else hash.E++;
+          if (sH.has(x)) sH.set(x, sH.get(x) + 1);
+          else sH.set(x, 1);
         }
-        if (hash.number === 5) console.log(hash.A);
-        //console.log(hash);
+        let max = Number.MIN_SAFE_INTEGER;
+        for (let [key, val] of sH) {
+          if (val > max) {
+            max = val;
+            answer = key;
+          }
+        }
         return answer;
       }
       let str = "BACBACCACCBDEDE";
