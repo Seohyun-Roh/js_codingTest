@@ -6,22 +6,13 @@
   </head>
   <body>
     <script>
-      function solution(str1, str2) {
-        let answer = "YES";
-        let sH = new Map();
-        for (let x of str1) {
-          if (sH.has(x)) sH.set(x, sH.get(x) + 1);
-          else sH.set(x, 1);
-        }
-        for (let x of str2) {
-          if (!sH.has(x) || sH.get() === 0) return "NO";
-          sH.set(x, sH.get(x) - 1);
-        }
+      function solution(s, t) {
+        let answer;
         return answer;
       }
 
-      let a = "AbaAeCe";
-      let b = "baeeACA";
+      let a = 'bacaAacba';
+      let b = 'abc';
       console.log(solution(a, b));
     </script>
   </body>
