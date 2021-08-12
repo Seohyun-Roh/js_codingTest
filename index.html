@@ -7,12 +7,26 @@
   <body>
     <script>
       function solution(s, t) {
-        let answer;
+        let answer = 0;
+        let n = t.length;
+        for (let i = n; i <= s.length; i++) {
+          let word = s.slice(i - n, i);
+          let sH = new Map();
+          for (let x of word) {
+            if (sH.get(x)) sH.set(x, sH.get(x) + 1);
+            else sH.set(x, 1);
+          }
+          for (let i = 0; i < n; i++) {
+            if (!sH.get(t[i]) || sH.get(t[i]) === 0) break;
+            sH.set(t[i], sH.get(t[i]) - 1);
+            if (i === n - 1) answer++;
+          }
+        }
         return answer;
       }
 
-      let a = 'bacaAacba';
-      let b = 'abc';
+      let a = "bacaAacba";
+      let b = "abc";
       console.log(solution(a, b));
     </script>
   </body>
