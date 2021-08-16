@@ -6,43 +6,12 @@
   </head>
   <body>
     <script>
-      function compareHash(hash1, hash2) {
-        if (hash1.size !== hash2.size) return false;
-        for (let [key, value] of hash1) {
-          if (!hash2.get(key) || hash2.get(key) !== value) return false;
-        }
-
-        return true;
-      }
-      function solution(s, t) {
-        let answer = 0;
-        let n = t.length;
-        let lt = 0;
-        let sH = new Map();
-        let tH = new Map();
-        for (let x of t) {
-          if (tH.get(x)) tH.set(x, tH.get(x) + 1);
-          else tH.set(x, 1);
-        }
-        for (let i = 0; i < n; i++) {
-          if (sH.get(s[i])) sH.set(s[i], sH.get(s[i]) + 1);
-          else sH.set(s[i], 1);
-        }
-        if (compareHash(sH, tH)) answer++;
-        for (let rt = n; rt < s.length; rt++) {
-          sH.set(s[lt], sH.get(s[lt]) - 1);
-          if (sH.get(s[lt]) === 0) sH.delete(s[lt]);
-          if (sH.get(s[rt])) sH.set(s[rt], sH.get(s[rt]) + 1);
-          else sH.set(s[rt], 1);
-          if (compareHash(sH, tH) === true) answer++;
-          lt++;
-        }
+      function solution(s) {
+        let answer;
         return answer;
       }
-
-      let a = "bacaAacba";
-      let b = "abc";
-      console.log(solution(a, b));
+      let a = "(()(()))(()";
+      console.log(solution(a));
     </script>
   </body>
 </html>
