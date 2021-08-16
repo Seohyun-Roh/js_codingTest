@@ -7,21 +7,12 @@
   <body>
     <script>
       function solution(s) {
-        let answer = "YES";
-        let stack = [];
-        for (let x of s) {
-          if (x === "(") {
-            stack.push(x);
-          } else {
-            let item = stack.pop();
-            if (item !== "(") return "NO";
-          }
-        }
-        if (stack[0] === "(") return "NO";
+        let answer;
         return answer;
       }
-      let a = "(()(()))(()";
-      console.log(solution(a));
+
+      let str = "(A(BC)D)EF(G(H)(IJ)K)LM(N)";
+      console.log(solution(str));
     </script>
   </body>
 </html>
