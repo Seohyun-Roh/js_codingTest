@@ -10,17 +10,15 @@
         let answer = 0;
         let blanket = [];
         for (let x of moves) {
-          let move = x - 1;
+          let pos = x - 1;
           for (let i = 0; i < board.length; i++) {
-            if (board[i][move] !== 0) {
-              if (blanket[blanket.length - 1] === board[i][move]) {
+            if (board[i][pos] !== 0) {
+              let tmp = board[i][pos];
+              board[i][pos] = 0;
+              if (tmp === blanket[blanket.length - 1]) {
                 blanket.pop();
                 answer += 2;
-                board[i][move] = 0;
-                break;
-              }
-              blanket.push(board[i][move]);
-              board[i][move] = 0;
+              } else blanket.push(tmp);
               break;
             }
           }
