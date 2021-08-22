@@ -8,21 +8,16 @@
     <script>
       function solution(n, k) {
         let answer;
-        let queue = [];
-        for (let i = 1; i <= n; i++) {
-          queue.push(i);
+        let queue = Array.from({ length: n }, (v, i) => i + 1);
+
+        //let queue = [];
+        //for (let i = 1; i <= n; i++) queue.push(i);
+
+        while (queue.length) {
+          for (let i = 1; i < k; i++) queue.push(queue.shift());
+          queue.shift();
+          if (queue.length === 1) answer = queue.shift();
         }
-        let count = 1;
-        while (queue.length !== 1) {
-          if (count === k) {
-            count = 1;
-            queue.shift();
-            continue;
-          }
-          queue.push(queue.shift());
-          count++;
-        }
-        answer = queue[0];
         return answer;
       }
 
