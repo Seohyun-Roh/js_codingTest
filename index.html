@@ -7,7 +7,16 @@
   <body>
     <script>
       function solution(need, plan) {
-        let answer;
+        let answer = 'YES';
+        let queue = [];
+        for (let x of plan) queue.push(x);
+        for (let i = 0; i < need.length; i++) {
+          while (1) {
+            if (queue.length === 0) return 'NO';
+            let cmp = queue.shift();
+            if (need[i] === cmp) break;
+          }
+        }
         return answer;
       }
 
