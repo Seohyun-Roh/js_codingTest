@@ -6,22 +6,23 @@
   </head>
   <body>
     <script>
-      function solution(arr) {
-        let answer = arr;
-        let rt = 0;
-
-        for (let lt = 0; lt < arr.length; lt++) {
-          for (let j = lt + 1; j < arr.length; j++) {
-            if (arr[rt] >= arr[j]) rt = j;
+      function solution(need, plan) {
+        let answer = "YES";
+        let queue = need.split("");
+        for (let x of plan) {
+          if (queue.includes(x)) {
+            if (queue[0] === x) {
+              queue.shift();
+            } else return "NO";
           }
-          [arr[lt], arr[rt]] = [arr[rt], arr[lt]];
-          rt = lt + 1;
         }
+        if (queue.length > 0) return "NO";
         return answer;
       }
 
-      let arr = [13, 5, 11, 7, 23, 15];
-      console.log(solution(arr));
+      let a = "CBA";
+      let b = "CBDAGE";
+      console.log(solution(a, b));
     </script>
   </body>
 </html>
