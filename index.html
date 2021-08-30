@@ -8,25 +8,10 @@
     <script>
       function solution(arr) {
         let answer = arr;
-        let res = false;
-        while (1) {
-          for (let i = 0; i < arr.length - 1; i++) {
-            if (arr[i] >= arr[i + 1])
-              [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
-          }
-          for (let i = 0; i < arr.length - 1; i++) {
-            if (arr[i] <= arr[i + 1]) res = true;
-            else {
-              res = false;
-              break;
-            }
-          }
-          if (res) break;
-        }
         return answer;
       }
 
-      let arr = [13, 5, 11, 7, 23, 15, 33, 5];
+      let arr = [1, 2, 3, -3, -2, 5, 6, -6];
       console.log(solution(arr));
     </script>
   </body>
