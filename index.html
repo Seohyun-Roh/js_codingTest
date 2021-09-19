@@ -6,93 +6,52 @@
   </head>
   <body>
     <script>
-      function solution(s) {
-        let answer = "YES";
-        s = s.toLowerCase();
-        let len = s.length;
-        for (let i = 0; i < len / 2; i++) {
-          if (s[i] !== s[len - 1 - i]) {
-            return "NO";
+      function solution(n, arr) {
+        let answer,
+          max = Number.MIN_SAFE_INTEGER;
+        for (let x of arr) {
+          let sum = x
+            .toString()
+            .split("")
+            .reduce((a, b) => a + parseInt(b), 0);
+          if (max < sum) {
+            answer = x;
+            max = sum;
+          } else if (max === sum) {
+            answer = answer < x ? x : answer;
           }
         }
         return answer;
       }
 
-      let str = "goooG";
-      console.log(solution(str));
+      let arr = [128, 460, 603, 40, 521, 137, 123];
+      console.log(solution(7, arr));
 
-      function solution2(s) {
-        let answer = "YES";
-        /*s = s.toLowerCase();
-        s = s.split("");
-        s = s.filter((x) => x.charCodeAt() >= 97 && x.charCodeAt() <= 123);
-        s = s.join("");
-        let len = s.length;
-        console.log(s);
-        for (let i = 0; i < Math.floor(len / 2); i++) {
-          if (s[i] !== s[len - 1 - i]) return "NO";
-        }*/
-        s = s.toLowerCase().replace(/[^a-z]/g, "");
-        if (s !== s.split("").reverse().join("")) return "NO";
-        return answer;
+      function isPrime(num) {
+        if (num <= 1) {
+          return false;
+        } else if (num === 2) {
+          return true;
+        } else if (num === 3 || num === 5 || num === 7) {
+          return true;
+        } else if (num % 2 === 0) {
+          return false;
+        }
       }
 
-      str = "found7, time: study; Yduts; emit, 7Dnuof";
-      console.log(solution2(str));
-
-      function solution3(s) {
-        let answer = str
-          .split("")
-          .filter((x) => !isNaN(x))
-          .join("");
-        return parseInt(answer);
-      }
-      str = "g0en2T0s8eSoft";
-      console.log(solution3(str));
-
-      function solution4(s, t) {
+      function solution2(arr) {
         let answer = [];
-        let p = 1000;
-        for (let x of s) {
-          if (x === t) {
-            p = 0;
-            answer.push(p);
-          } else {
-            p++;
-            answer.push(p);
-          }
-        }
-        p = 1000;
-        for (let i = s.length - 1; i >= 0; i--) {
-          if (s[i] === t) {
-            p = 0;
-          } else {
-            p++;
-            answer[i] = Math.min(answer[i], p);
+        for (let x of arr) {
+          let rev = parseInt(x.toString().split("").reverse().join(""));
+          if (isPrime(rev)) {
+            answer.push(rev);
           }
         }
         return answer;
       }
-      str = "teachermode";
-      t = "e";
-      console.log(solution4(str, t));
 
-      function solution5(s) {
-        let answer = "";
-        let cnt = 1;
-        for (let i = 0; i < s.length; i++) {
-          if (s[i] === s[i + 1]) {
-            cnt++;
-          } else {
-            answer += s[i];
-            if (cnt > 1) answer += String(cnt);
-            cnt = 1;
-          }
-        }
-        return answer;
-      }
-      str = "KKHSSSSSSSE";
-      console.log(solution5(str));
+      arr = [32, 55, 62, 20, 250, 370, 200, 30, 100];
+      console.log(solution2(arr));
     </script>
   </body>
 </html>
