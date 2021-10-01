@@ -7,7 +7,11 @@
   <body>
     <script>
       function solution(size, arr) {
-        let answer;
+        let answer = Array(5).fill(0);
+        for (let x of arr) {
+          answer.unshift(x);
+          answer.pop();
+        }
         return answer;
       }
 
