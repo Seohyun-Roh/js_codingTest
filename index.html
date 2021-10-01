@@ -10,18 +10,15 @@
         let answer = arr;
         for (let i = 1; i < arr.length; i++) {
           let key = arr[i];
-          let idx = i;
-          for (let j = i - 1; j >= 0; j--) {
-            if (arr[j] >= key) {
+          let j;
+          for (j = i - 1; j >= 0; j--) {
+            if (key <= arr[j]) {
               arr[j + 1] = arr[j];
-              idx = j;
-              if (j === 0) {
-                arr[idx] = key;
-              }
             } else {
-              arr[idx] = key;
+              break;
             }
           }
+          arr[j + 1] = key;
         }
         return answer;
       }
